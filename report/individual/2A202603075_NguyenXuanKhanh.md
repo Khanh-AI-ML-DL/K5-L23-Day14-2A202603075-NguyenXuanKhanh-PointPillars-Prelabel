@@ -44,11 +44,30 @@ Mức giảm 33% là tính trong mẫu, chọn cấu hình và chấm trên cùn
 Số đo từ `scripts/pp_prelabel.py --frames d14_<ID>/frames_B.txt --config d14_<ID>/best_config.json --gt d14_<ID>/ref_B.json`:
 
 | Xóa | Thêm | Sửa | Chi phí |
-|---:|---:|---:|---:|
-| | | | |
+|----:|-----:|----:|--------:|
+|  90 |   22 |   7 |    52,5 |
 
-- Loại box tốn công sửa nhất ở tập B: ...
+| Frame                                                                                                                        | Xóa | Thêm | Sửa | Chi phí |
+|------------------------------------------------------------------------------------------------------------------------------|---|---|---|---|
+| s02f00                                                                                                                       | 4 | 1 | 1 | 2.7 |
+| s02f21                                                                                                                       | 9 | 1 | 0 | 3.7 |
+| s02f46                                                                                                                       | 14 | 3 | 0 | 7.2 |
+| s03f00                                                                                                                       | 2 | 2 | 2 | 3.6 |
+| s03f22                                                                                                                       | 5 | 5 | 0 | 6.5 |
+| s03f48                                                                                                                       | 13 | 1 | 0 | 4.9 |
+| s04f08                                                                                                                       | 5 | 1 | 1 | 3.0 |
+| s04f26                                                                                                                       | 5 | 1 | 0 | 2.5 |
+| s04f53                                                                                                                       | 2 | 2 | 0 | 2.6 |
+| s05f05                                                                                                                       | 12 | 2 | 2 | 6.6 |
+| s05f22                                                                                                                       | 9 | 2 | 1 | 5.2 |
+| s05f48                                                                                                                       | 10 | 1 | 0 | 4.0 |
+ 
+- Loại box tốn công sửa nhất ở tập B: s02f46     19  {'Car': 14, 'Cyclist': 4, 'Pedestrian': 1}  cảnh báo kích thước=0  1.0s | xóa 14 thêm 3 sửa 0 → chi phí 7.2
 
 ## 5. Giới hạn
 
-- Nêu ít nhất 2 giới hạn (ví dụ: chỉ 3 frame tune; model KITTI không có Truck/Bus; chi phí là công thức, chưa phải thời gian sửa thật): ...
+- Nêu ít nhất 2 giới hạn (ví dụ: chỉ 3 frame tune; model KITTI không có Truck/Bus; chi phí là công thức, chưa phải thời gian sửa thật): 
+    - Chỉ tune trên 3 frame, không biết cấu hình có ổn định trên các frame khác không.
+    - Model  ít các ảnh Truck/Bus, nên dự đoán sai với các vật thể này.
+    - Chi phí là công thức, chưa phải thời gian sửa thật.
+    - tool dự đoán quá nhiều Cyclist dư thừa do nhiễu từ lidar với cây cối và các vật thể khác, nên chi phí tăng.
